@@ -72,19 +72,29 @@ function pintarSelo() {
 <p>Complete 10 massagens e ganhe 1 de brinde.</p>
 
 <div class="selos">
-<div class="selo" id="selo1">1</div><div class="selo">2</div>
-<div class="selo">3</div>
-<div class="selo">4</div>
-<div class="selo">5</div>
-<div class="selo">6</div>
-<div class="selo">7</div>
-<div class="selo">8</div>
-<div class="selo">9</div>
-<div class="selo">10</div>
-</div>
-<button onclick="pintarSelo()">
-    Pintar o primeiro selo
-</button><a href="index.html">
+    <div class="selo" id="selo1">1</div>
+    <div class="selo" id="selo2">2</div>
+    <div class="selo" id="selo3">3</div>
+    <div class="selo" id="selo4">4</div>
+    <div class="selo" id="selo5">5</div>
+    <div class="selo" id="selo6">6</div>
+    <div class="selo" id="selo7">7</div>
+    <div class="selo" id="selo8">8</div>
+    <div class="selo" id="selo9">9</div>
+    <div class="selo" id="selo10">10</div>
+</div><button onclick="pintarSelo()">
+   <script>
+function pintarTodos() {
+
+    for (let i = 1; i <= 10; i++) {
+
+        document.getElementById("selo" + i).style.background = "#43a047";
+        document.getElementById("selo" + i).style.color = "white";
+
+    }
+
+}
+</script></button><a href="index.html">
 <button>⬅ Voltar</button>
 </a>
 
