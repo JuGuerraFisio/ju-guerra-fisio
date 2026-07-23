@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão Fidelidade</title>
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #dff5e1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .cartao {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            width: 360px;
+        }
+
+        .selos {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .selo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #43a047;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="cartao">
+
+<h1>🌿 Cartão Fidelidade</h1>
+
+<p>Complete 10 massagens e ganhe 1 de brinde.</p>
+
+<div class="selos">
+<div class="selo">1</div>
+<div class="selo">2</div>
+<div class="selo">3</div>
+<div class="selo">4</div>
+<div class="selo">5</div>
+<div class="selo">6</div>
+<div class="selo">7</div>
+<div class="selo">8</div>
+<div class="selo">9</div>
+<div class="selo">10</div>
+</div>
+
+<a href="index.html">
+<button>⬅ Voltar</button>
+</a>
+
+</div>
+
+</body>
+</html>
