@@ -41,64 +41,63 @@
             justify-content: center;
             align-items: center;
             font-weight: bold;
-        }
-
-        a {
-            text-decoration: none;
+            transition: 0.3s;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 12px 20px;
             border: none;
             border-radius: 10px;
             background: #43a047;
             color: white;
             cursor: pointer;
             font-size: 16px;
+            margin: 5px;
+        }
+
+        a {
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
-<script>
-function pintarSelo() {
-    document.getElementById("selo1").style.background = "#43a047";
-    document.getElementById("selo1").style.color = "white";
-}
-</script><div class="cartao">
 
-<h1>🌿 Cartão Fidelidade</h1>
+    <div class="cartao">
 
-<p>Complete 10 massagens e ganhe 1 de brinde.</p>
+        <h1>🌿 Cartão Fidelidade</h1>
 
-<div class="selos">
-    <div class="selo" id="selo1">1</div>
-    <div class="selo" id="selo2">2</div>
-    <div class="selo" id="selo3">3</div>
-    <div class="selo" id="selo4">4</div>
-    <div class="selo" id="selo5">5</div>
-    <div class="selo" id="selo6">6</div>
-    <div class="selo" id="selo7">7</div>
-    <div class="selo" id="selo8">8</div>
-    <div class="selo" id="selo9">9</div>
-    <div class="selo" id="selo10">10</div>
-<button onclick="pintarTodos()">Completar Cartão</button>
+        <p>Complete 10 massagens e ganhe 1 de brinde.</p>
+
+        <div class="selos">
+            <div class="selo" id="selo1">1</div>
+            <div class="selo" id="selo2">2</div>
+            <div class="selo" id="selo3">3</div>
+            <div class="selo" id="selo4">4</div>
+            <div class="selo" id="selo5">5</div>
+            <div class="selo" id="selo6">6</div>
+            <div class="selo" id="selo7">7</div>
+            <div class="selo" id="selo8">8</div>
+            <div class="selo" id="selo9">9</div>
+            <div class="selo" id="selo10">10</div>
+        </div>
+
+        <button onclick="pintarTodos()">Completar Cartão</button>
+
+        <a href="index.html">
+            <button>⬅ Voltar</button>
+        </a>
+
+    </div>
+
     <script>
         function pintarTodos() {
-
-    for (let i = 1; i <= 10; i++) {
-
-        document.getElementById("selo" + i).style.background = "#43a047";
-        document.getElementById("selo" + i).style.color = "white";
-
-    }
-
-}
-</script></button><a href="index.html">
-<button>⬅ Voltar</button>
-</a>
-
-</div>
+            for (let i = 1; i <= 10; i++) {
+                document.getElementById("selo" + i).style.background = "#43a047";
+                document.getElementById("selo" + i).style.color = "white";
+            }
+        }
+    </script>
 
 </body>
 </html>
