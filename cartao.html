@@ -82,7 +82,7 @@
             <div class="selo" id="selo10">10</div>
         </div>
 
-        <button onclick="pintarTodos()">Completar Cartão</button>
+        <button onclick="registrarMassagem()">Registrar Massagem</button>
 
         <a href="index.html">
             <button>⬅ Voltar</button>
@@ -90,14 +90,30 @@
 
     </div>
 
-    <script>
-        function pintarTodos() {
-            for (let i = 1; i <= 10; i++) {
-                document.getElementById("selo" + i).style.background = "#43a047";
-                document.getElementById("selo" + i).style.color = "white";
-            }
-        }
-    </script>
+   <script>
 
+    let massagens = 0;
+
+    function registrarMassagem() {
+
+        if (massagens < 10) {
+
+            massagens++;
+
+            document.getElementById("selo" + massagens).style.background = "#43a047";
+
+            document.getElementById("selo" + massagens).style.color = "white";
+
+            if (massagens === 10) {
+
+                alert("🎉 Parabéns! Você ganhou 1 Quick Massagem grátis!");
+
+            }
+
+        }
+
+    }
+
+</script>
 </body>
 </html>
