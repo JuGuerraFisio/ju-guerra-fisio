@@ -58,16 +58,24 @@
 function registrarMassagem() {
     alert("🎉 Massagem registrada!");
 }
-</script>   <div class="cartao">
 
-    <h1>🌿 Ju Guerra Fisio</h1>
+function atualizarCliente() {
+    let nome = document.getElementById("nomeCliente").value;
+    document.getElementById("mostrarCliente").innerText = nome;
+}
+</script>
 
-    <p>Cliente: __________</p>
+<h1>🌿 Ju Guerra Fisio</h1>
 
-    <p>
-        A cada <strong>10 Quick Massagens</strong>,
-        ganhe <strong>1 de brinde.</strong>
-    </p>
+<label>Nome do cliente:</label>
+<input type="text" id="nomeCliente" placeholder="Digite o nome" oninput="atualizarCliente()">
+
+<p>Cliente: <span id="mostrarCliente">__________</span></p>
+
+<p>
+    A cada <strong>10 Quick Massagens</strong>,
+    ganhe <strong>1 de brinde.</strong>
+</p></p>   
 
  <a href="cartao.html">
    <button onclick="pintarTodos()">
