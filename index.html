@@ -62,10 +62,18 @@ function registrarMassagem() {
 function atualizarCliente() {
     let nome = document.getElementById("nomeCliente").value;
     document.getElementById("mostrarCliente").innerText = nome;
+    localStorage.setItem("cliente", nome);
 }
-</script>
 
-<h1>🌿 Ju Guerra Fisio</h1>
+window.onload = function() {
+    let nomeSalvo = localStorage.getItem("cliente");
+    if (nomeSalvo) {
+        document.getElementById("nomeCliente").value = nomeSalvo;
+        document.getElementById("mostrarCliente").innerText = nomeSalvo;
+    }
+}
+   </script> 
+    <h1>🌿 Ju Guerra Fisio</h1>
 
 <label>Nome do cliente:</label>
 <input type="text" id="nomeCliente" placeholder="Digite o nome" oninput="atualizarCliente()">
