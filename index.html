@@ -1,171 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ju Guerra Fisio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ju Guerra Fisio</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #dff5e1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#dff5e1;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
 
-    .cartao {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-      text-align: center;
-      width: 320px;
-    }
+.cartao{
+  background:white;
+  width:100%;
+  max-width:360px;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.15);
+  text-align:center;
+}
 
-    h1 {
-      color: #2e7d32;
-      margin-top: 0;
-    }
+h1{
+  color:#2e7d32;
+  margin-top:0;
+}
 
-    input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      font-size: 16px;
-      text-align: center;
-    }
+input{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px;
+  margin:10px 0 15px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  font-size:16px;
+  background:white;
+  color:#333;
+}
 
-    .selos {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      margin: 20px 0;
-    }
+.selos{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:10px;
+  margin:20px 0;
+}
 
-    .selo {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: #e0e0e0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      font-size: 20px;
-      transition: 0.2s;
-    }
+.selo{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:#e0e0e0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:22px;
+  cursor:pointer;
+}
 
-    .selo.ativo {
-      background: #4caf50;
-      color: white;
-    }
+.selo.ativo{
+  background:#4caf50;
+  color:white;
+}
 
-    button {
-      margin-top: 10px;
-      padding: 12px 18px;
-      border: none;
-      border-radius: 12px;
-      background: #2e7d32;
-      color: white;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #256628;
-    }
-  </style>
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:12px;
+  background:#2e7d32;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+}
+</style>
 </head>
 
 <body>
 
 <div class="cartao">
-  <h1>🌿 Ju Guerra Fisio</h1>
 
-  <label>Nome do cliente:</label><br>
-  <input type="text" id="nomeCliente" placeholder="Digite o nome" oninput="atualizarCliente()">
+<h1>🌿 Ju Guerra Fisio</h1>
 
-  <p>Cliente: <span id="mostrarCliente">__________</span></p>
+<label>Nome do cliente</label>
 
-  <p>
-    A cada <strong>10 Quick Massagens</strong>,
-    ganhe <strong>1 de brinde.</strong>
-  </p>
+<input type="text" id="nomeCliente" placeholder="Digite o nome do cliente">
 
-  <div class="selos" id="selos"></div>
+<p><strong>Cliente:</strong> <span id="mostrarCliente">__________</span></p>
 
-  <button onclick="completarCartao()">Completar Cartão</button>
-  <br>
-  <button onclick="registrarMassagem()">Registrar Massagem</button>
+<p>A cada <strong>10 Quick Massagens</strong>, ganhe <strong>1 de brinde</strong>.</p>
+
+<div class="selos" id="selos"></div>
+
+<button id="btnRegistrar">Registrar Massagem</button>
+<button id="btnCompletar">Completar Cartão</button>
+
 </div>
 
 <script>
-  let totalSelos = 10;
-  let selosAtivos = JSON.parse(localStorage.getItem("selos")) || Array(totalSelos).fill(false);
+const input = document.getElementById('nomeCliente');
+const mostrar = document.getElementById('mostrarCliente');
+const container = document.getElementById('selos');
+const btnRegistrar = document.getElementById('btnRegistrar');
+const btnCompletar = document.getElementById('btnCompletar');
 
-  function criarSelos() {
-    const container = document.getElementById("selos");
-    container.innerHTML = "";
+let selos = JSON.parse(localStorage.getItem('selos') || '[]');
 
-    selosAtivos.forEach((ativo, index) => {
-      const selo = document.createElement("div");
-      selo.className = "selo" + (ativo ? " ativo" : "");
-      selo.innerHTML = ativo ? "✓" : "";
+if(selos.length !== 10){
+  selos = Array(10).fill(false);
+}
 
-      selo.onclick = () => {
-        selosAtivos[index] = !selosAtivos[index];
-        localStorage.setItem("selos", JSON.stringify(selosAtivos));
-        criarSelos();
-      };
+function renderizar(){
+  container.innerHTML = '';
+  selos.forEach((ativo,i)=>{
+    const d = document.createElement('div');
+    d.className = 'selo' + (ativo ? ' ativo' : '');
+    d.textContent = ativo ? '✓' : '';
+    d.onclick = () => {
+      selos[i] = !selos[i];
+      salvar();
+    };
+    container.appendChild(d);
+  });
+}
 
-      container.appendChild(selo);
-    });
+function salvar(){
+  localStorage.setItem('selos', JSON.stringify(selos));
+  renderizar();
+}
+
+btnRegistrar.onclick = () => {
+  const i = selos.findIndex(s => !s);
+  if(i >= 0){
+    selos[i] = true;
+    salvar();
+  } else {
+    alert('🎉 Cartão completo!');
   }
+};
 
-  function registrarMassagem() {
-    const index = selosAtivos.findIndex(s => !s);
+btnCompletar.onclick = () => {
+  selos = Array(10).fill(true);
+  salvar();
+};
 
-    if (index !== -1) {
-      selosAtivos[index] = true;
-      localStorage.setItem("selos", JSON.stringify(selosAtivos));
-      criarSelos();
+input.addEventListener('input', () => {
+  mostrar.textContent = input.value || '__________';
+  localStorage.setItem('cliente', input.value);
+});
 
-      if (selosAtivos.every(s => s)) {
-        alert("🎉 Cartão completo! Cliente ganhou 1 Quick Massagem de brinde!");
-      } else {
-        alert("💆 Quick Massagem registrada!");
-      }
-    } else {
-      alert("🎉 O cartão já está completo!");
-    }
+window.onload = () => {
+  const nome = localStorage.getItem('cliente');
+  if(nome){
+    input.value = nome;
+    mostrar.textContent = nome;
   }
-
-  function completarCartao() {
-    selosAtivos = Array(totalSelos).fill(true);
-    localStorage.setItem("selos", JSON.stringify(selosAtivos));
-    criarSelos();
-  }
-
-  function atualizarCliente() {
-    const nome = document.getElementById("nomeCliente").value;
-    document.getElementById("mostrarCliente").innerText = nome;
-    localStorage.setItem("cliente", nome);
-  }
-
-  window.onload = function () {
-    criarSelos();
-
-    const nomeSalvo = localStorage.getItem("cliente");
-    if (nomeSalvo) {
-      document.getElementById("nomeCliente").value = nomeSalvo;
-      document.getElementById("mostrarCliente").innerText = nomeSalvo;
-    }
-  };
+  renderizar();
+};
 </script>
 
 </body>
